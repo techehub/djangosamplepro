@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title> Test </title>>
+    {% endblock %}
+    </head>
+<body>
+
+<table width="100%" border="2">
+    <tr>
+        <td colspan="2">
+            <h1>HEADER </h1>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+        </td>
+        <td align="right">
+            <a href="home">home</a>
+            <a href="contact">contact</a>
+            <a href="result">result</a>
+        </td>
+    </tr>
+
+    <tr width="500">
+       <td colspan="2" >
+           {% block mycontent%}
+             test
+           {% endblock%}
+        </td>
+    </tr>
+    <tr>
+       <td colspan="2">
+          <h1>FOOTER</h1>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
+

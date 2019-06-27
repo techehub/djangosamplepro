@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1> Student List </h1>
+
+
+
+<table border="2">
+    <tr>
+    <th> RollNo </th>
+    <th> Name </th>
+    <th> Mark</th>
+    <th> Phone </th>
+    <th> Email</th>
+         <th> Status</th>
+    </tr>
+
+    {%  for s in sss %}
+
+
+<tr>
+    <td>{{s.rollNo}}</td>
+    <td>{{s.name}}</td>
+    <td>{{s.mark}}</td>
+    <td>{{s.phone}}</td>
+    <td>{{s.email}}</td>
+      <td>{{s.status}}</td>
+</tr>
+
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
