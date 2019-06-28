@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import homepage, mypage1, mypage2, resultpage, studentinfo,contactpage
+from .views import homepage, mypage1, mypage2, resultpage, \
+    studentinfo,contactpage, signuppage,logoutpage, loginpage
+
+from django.conf.urls import include
 
 
 
@@ -25,7 +28,11 @@ urlpatterns = [
     path('xyx', mypage2),
     path ('result', resultpage),
     path ('sinfo', studentinfo),
-    path ('contact', contactpage)
+    path ('contact', contactpage),
+    path ('signup', signuppage),
+    path ('logout', logoutpage),
+    path ('login', loginpage),
+    #path('accounts/', include('django.contrib.auth.urls')),
 
 
 ]

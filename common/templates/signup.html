@@ -1,0 +1,21 @@
+
+{% extends "main.html" %}
+
+
+ {% block title %}
+    <title> Sign Up  </title>
+{% endblock %}
+
+{% block mycontent%}
+
+<h1> My Signup Page </h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <table>
+    {{myform}}
+    </table>
+   <input type="submit">
+</form>
+
+{% endblock%}

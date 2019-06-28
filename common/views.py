@@ -3,6 +3,9 @@ from django.template import loader
 
 from .models import Student, Contact
 from .forms import ContactForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import logout, authenticate, login
+from django.shortcuts import render, redirect
 
 def homepage(request):
 
@@ -85,6 +88,55 @@ def contactpage(request):
     return HttpResponse(template.render(data, request))
 
 
+
+def signuppage(request):
+
+  if request.method =='POST':
+
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      username = form.cleaned_data.get('username')
+      raw_password = form.cleaned_data.get('password1')
+      user = authenticate(username=username, password=raw_password)
+
+      login(request,user)
+      return redirect("/home")
+    else :
+
+      return render(request=request,
+                    template_name="signup.html",
+                    context={"myform": form})
+
+  else :
+    template = loader.get_template('signup.html')
+    mycontactform = UserCreationForm()
+    data = {"myform": mycontactform}
+
+    return HttpResponse(template.render(data, request))
+
+
+
+def logoutpage(request):
+    logout(request)
+    return redirect("/home")
+
+
+def loginpage (request):
+  if request.method=='POST':
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+      login( request,user)
+      return redirect("/home")
+    else:
+      return redirect("/login")
+
+  else :
+    template = loader.get_template('login.html')
+    data = {}
+    return HttpResponse(template.render(data, request))
 
 
 
